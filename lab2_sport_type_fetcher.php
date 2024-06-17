@@ -86,7 +86,8 @@ try {
 
                 $btnText = $node->text() . '(' . $node->attr('label') . ')';
                 $btnText = str_replace(' ', '', $btnText);
-                if (!in_array($btnText, $tabInfo[$index]['Type'])) {                                                            $tabInfo[$index]['Type'][] = $btnText;
+                if (!in_array($btnText, $tabInfo[$index]['Type'])) {
+                    $tabInfo[$index]['Type'][] = $btnText;
                 }
             });
         }
@@ -122,7 +123,8 @@ try {
         } else {
             $tabInfo[$index]['SubType'][$subIndex] = [];
 
-            $contents = $page->evaluate('document.documentElement.innerHTML')->getReturnValue();                        $collapsedItemCrawler = new Crawler($contents);
+            $contents = $page->evaluate('document.documentElement.innerHTML')->getReturnValue();
+            $collapsedItemCrawler = new Crawler($contents);
 
             $subTypeButtonItem = 'el-button subtype-button el-button--button activeButton';
             $subTypeButtonItem2 = 'el-button subtype-button el-button--button';
@@ -149,10 +151,14 @@ try {
                 $subIndex = 0;
                 $index++;
                 $buttonId = $buttonIds[$index];
-                if ($buttonId !== null && $index > 0 && $index < count($tabInfo)) {                                             $jsCode = sprintf('document.querySelector(\'div[id="%s"]\').click()', $buttonId);                           $page->evaluate($jsCode)->getReturnValue();                                                                 sleep(5);                                                                                               }
+                if ($buttonId !== null && $index > 0 && $index < count($tabInfo)) {
+                    $jsCode = sprintf('document.querySelector(\'div[id="%s"]\').click()', $buttonId);
+                    $page->evaluate($jsCode)->getReturnValue();
+                    sleep(5);
+                }
             } else {
                 preg_match_all('/(\w+)/', $tabInfo[$index]['Type'][$subIndex], $matched);
-                $subTypeName = $matched[0][0]; 
+                $subTypeName = $matched[0][0];
                 $jsCode = sprintf(
                     'document.querySelector(\'button[label="%s"],button[value="%s"]\').click()',
                     $subTypeName, $subTypeName
