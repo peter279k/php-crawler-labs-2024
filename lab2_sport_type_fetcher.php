@@ -134,7 +134,7 @@ try {
                 global $subIndex;
                 global $tabInfo;
 
-                $tabInfo[$index]['SubType'][$subIndex][] = $node->text();
+                $tabInfo[$index]['SubType'][$subIndex][] = sprintf('%s(%s)', $node->attr('label'), $node->text());
             });
 
             $collapsedItemCrawler->filter(sprintf('button[class="%s"]', $subTypeButtonItem2))->reduce(function(Crawler $node, $i) {
@@ -143,7 +143,7 @@ try {
                 global $subIndex;
                 global $tabInfo;
 
-                $tabInfo[$index]['SubType'][$subIndex][] = $node->text();
+                $tabInfo[$index]['SubType'][$subIndex][] = sprintf('%s(%s)', $node->attr('label'), $node->text());
             });
 
             $subIndex++;
