@@ -2,8 +2,6 @@
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\RequestException;
 use HeadlessChromium\BrowserFactory;
 use HeadlessChromium\Exception\JavascriptException;
 use Symfony\Component\DomCrawler\Crawler;
