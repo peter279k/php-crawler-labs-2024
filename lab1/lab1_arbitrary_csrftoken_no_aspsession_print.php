@@ -70,3 +70,5 @@ $response = $client->request('POST', $printPdfUrl, [
     'cookies' => $cookieJar,
     'sink' => fopen(sprintf('%s.pdf', $message), 'wb'),
 ]);
+
+echo sprintf('%s.pdf file is saved.', $message);
