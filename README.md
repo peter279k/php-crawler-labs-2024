@@ -1,4 +1,4 @@
-# php-crawler-lab2-2024
+# php-crawler-labs-2024
 
 ## Introduction
 
